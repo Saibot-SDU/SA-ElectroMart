@@ -11,7 +11,7 @@ const Playstations = () => {
   ];
 
   return (
-    <div>
+    <div className="content-container">
       <h2>Playstations</h2>
       <ul>
         {playstations.map((playstation, index) => (

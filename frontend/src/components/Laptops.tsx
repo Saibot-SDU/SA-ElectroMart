@@ -12,7 +12,7 @@ const Laptops = () => {
   ];
 
   return (
-    <div>
+    <div className="content-container">
       <h2>Laptops</h2>
       <ul>
         {laptops.map((laptop, index) => (

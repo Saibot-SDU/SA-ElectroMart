@@ -11,7 +11,7 @@ const Phones = () => {
   ];
 
   return (
-    <div>
+    <div className="content-container">
       <h2>Phones</h2>
       <ul>
         {phones.map((phone, index) => (

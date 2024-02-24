@@ -1,17 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 const Carousel = () => {
-  // This example uses static images, replace them with your fetched products
+  const [products, setProducts] = useState<any[]>([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:3001/get-product-recommendations');
+        setProducts(response.data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
-    <div>
+    <div className="content-container">
       <h2>Recommended Products!</h2>
       <Swiper spaceBetween={50} slidesPerView={3}>
-        {/* Map through your products here */}
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
+        {products.map((product) => (
+          <SwiperSlide key={product.title}>
+            <div className="product-image-container">
+              <img src={product.imageUrl} alt={product.title} />
+            </div>
+            <h3>{product.title}</h3>
+            <p>Price: ${(product.basePrice * (1 - product.discountRate)).toFixed(2)}</p>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </div>
   );

@@ -11,7 +11,7 @@ const SSDs = () => {
   ];
 
   return (
-    <div>
+    <div className="content-container">
       <h2>SSDs</h2>
       <ul>
         {ssds.map((ssd, index) => (
