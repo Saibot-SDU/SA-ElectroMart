@@ -120,20 +120,26 @@ ul li img {
 }
 
 .product-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   width: 200px;
   height: auto;
   margin-left: 5px;
   margin-top: 5px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 5px;
+  border-radius: 4.8px;
 }
 
 .product-item img {
   width: 120px;
-  width: 120px;
+  height: auto;
   object-fit: cover;
 }
 
 .product-item h3 {
   font-size: 16px;
+  text-align: left;
 }

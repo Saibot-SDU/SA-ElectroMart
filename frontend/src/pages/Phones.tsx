@@ -23,16 +23,18 @@ const Phones = () => {
   return (
     <div className="content-container">
       <h2>Phones</h2>
-      <ul>
+      <div className='product-item-container'>
         {listOfphones.map((phone, index) => (
-          <li key={index}>
+          <div className='product-item' key={index}>
             <img src={phone.imageUrl} alt={phone.title} style={{ width: '100px', height: '100px' }} />
-            <div>{phone.title} - Price: ${phone.getPrice()}</div>
-          </li>
+            <h3>{phone.title}</h3>
+            <p>Price: ${phone.getPrice()}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
+
 };
 
 export default Phones;

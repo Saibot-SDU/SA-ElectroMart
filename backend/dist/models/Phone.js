@@ -4,7 +4,7 @@ exports.Phone = void 0;
 const ProductType_1 = require("./ProductType");
 class Phone {
     constructor(title, imageUrl, basePrice) {
-        this.taxRate = 0.25;
+        this.taxRate = 1.25;
         this.discountRate = 0.15;
         this.productType = ProductType_1.ProductType.Phone;
         this.title = title;

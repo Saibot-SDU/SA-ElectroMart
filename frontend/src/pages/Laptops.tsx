@@ -22,16 +22,18 @@ const Laptops = () => {
   return (
     <div className="content-container">
       <h2>Laptops</h2>
-      <ul>
+      <div className='product-item-container'>
         {listOflaptops.map((laptop, index) => (
-          <li key={index}>
+          <div className='product-item' key={index}>
             <img src={laptop.imageUrl} alt={laptop.title} style={{ width: '100px', height: '100px' }} />
-            <div>{laptop.title} - Price: ${laptop.getPrice()}</div>
-          </li>
+            <h3>{laptop.title}</h3>
+            <p>Price: ${laptop.getPrice()}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
+
 };
 
 export default Laptops;

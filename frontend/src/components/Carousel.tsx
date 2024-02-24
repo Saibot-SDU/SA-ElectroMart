@@ -40,7 +40,7 @@ const Carousel = () => {
                 <img src={product.imageUrl} alt={product.title} />
               </div>
               <h3>{product.title}</h3>
-              <p>Price: ${(product.basePrice * (1 - product.discountRate)).toFixed(2)}</p>
+              <p>Price: ${Math.round(product.basePrice * (1 - product.discountRate) * product.taxRate)}</p>
             </SwiperSlide>
           ))}
         </Swiper>

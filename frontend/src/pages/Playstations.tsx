@@ -23,16 +23,18 @@ const Playstations = () => {
   return (
     <div className="content-container">
       <h2>Playstations</h2>
-      <ul>
+      <div className='product-item-container'>
         {listOfplaystations.map((playstation, index) => (
-          <li key={index}>
+          <div className='product-item' key={index}>
             <img src={playstation.imageUrl} alt={playstation.title} style={{ width: '100px', height: '100px' }} />
-            <div>{playstation.title} - Price: ${playstation.getPrice()}</div>
-          </li>
+            <h3>{playstation.title}</h3>
+            <p>Price: ${playstation.getPrice()}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
+
 };
 
 export default Playstations;

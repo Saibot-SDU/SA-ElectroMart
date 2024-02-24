@@ -4,7 +4,7 @@ export class Laptop {
   public title: string;
   public imageUrl: string;
   public basePrice: number;
-  public taxRate: number = 0.25;
+  public taxRate: number = 1.25;
   public discountRate: number = 0.15;
   public productType: ProductType = ProductType.Laptop;
 
