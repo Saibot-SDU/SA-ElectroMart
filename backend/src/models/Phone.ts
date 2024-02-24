@@ -1,9 +1,12 @@
+import { ProductType } from "./ProductType";
+
 export class Phone {
     private title: string;
     private imageUrl: string;
     private basePrice: number;
     private taxRate: number = 0.25;
     private discountRate: number = 0.15;
+    private productType: ProductType = ProductType.Phone;
 
     constructor(title: string, imageUrl: string, basePrice: number) {
         this.title = title;

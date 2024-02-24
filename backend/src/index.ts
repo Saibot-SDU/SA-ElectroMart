@@ -1,18 +1,24 @@
 import express, { Request, Response } from 'express';
-import { PlayStation } from './models/PlayStation';
-import { Laptop } from './models/Laptop';
-import { Phone } from './models/Phone';
-import { SSD } from './models/SSD';
+import { recommendedProducts } from './dummyData';
 
 const app = express();
 const port = 3000;
 
-const recommendedProducts: (Laptop | Phone | SSD | PlayStation)[] = [
-    
-];
+app.use(express.json());
 
-app.get("/", (req: Request, res: Response) => {
-    res.send("Express + TypeScript Server");
+app.get("/get-product-recommendations", (_: Request, res: Response) => {
+    const randomNumber = Math.random();
+
+    if (randomNumber > 0.5) {
+        res.json(recommendedProducts);
+    }
+
+    return res.status(500).send('Internal Server Error');
+});
+
+app.get("/unfinished-feature", (_: Request, res: Response) => {
+    // Oh no, this feature is not ready for production!
+    return res.status(500).send('Internal Server Error');
 });
   
 app.listen(port, () => {
