@@ -3,13 +3,14 @@ import axios from 'axios';
 import { PlayStation } from '../models/PlayStation';
 
 const Playstations = () => {
-  const [playstations, setPlaystations] = useState<PlayStation[]>([]);
+  const [listOfplaystations, setPlaystations] = useState<PlayStation[]>([]);
 
   useEffect(() => {
     const fetchPlaystations = async () => {
       try {
         const response = await axios.get<PlayStation[]>('http://localhost:3001/get-products-by-category?productType=PlayStation');
-        setPlaystations(response.data);
+        const playstations = response.data.map(item => new PlayStation(item.title, item.imageUrl, item.basePrice));
+        setPlaystations(playstations);
       } catch (error) {
         console.error('Error fetching PlayStations:', error);
         setPlaystations([]);
@@ -19,18 +20,14 @@ const Playstations = () => {
     fetchPlaystations();
   }, []);
 
-  const getPriceAfterDiscount = (basePrice: number, discountRate: number) => {
-    return (basePrice * (1 - discountRate)).toFixed(2);
-  };
-
   return (
     <div className="content-container">
       <h2>Playstations</h2>
       <ul>
-        {playstations.map((playstation, index) => (
+        {listOfplaystations.map((playstation, index) => (
           <li key={index}>
             <img src={playstation.imageUrl} alt={playstation.title} style={{ width: '100px', height: '100px' }} />
-            <div>{playstation.title} - Price: ${getPriceAfterDiscount(playstation.basePrice, playstation.discountRate)}</div>
+            <div>{playstation.title} - Price: ${playstation.getPrice()}</div>
           </li>
         ))}
       </ul>

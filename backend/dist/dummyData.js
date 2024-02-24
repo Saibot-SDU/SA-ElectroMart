@@ -28,6 +28,6 @@ exports.recommendedProducts = [
     new SSD_1.SSD("SSD Supreme 1TB", "https://www.avxperten.dk/billeder/wd-green-ssd-hardisk-1tb-sata-iii-2-5tm-big.jpg", 149),
     new SSD_1.SSD("SSD UltraSpeed 500GB", "https://cf-images.dustin.eu/cdn-cgi/image/format=auto,quality=75,width=828,,fit=contain/image/d200001001863272/wd-red-sa500-nas-ssd-ssd-500gb-25-sata-600.jpg", 99),
     new SSD_1.SSD("SSD Budget 2TB", "https://www.proshop.dk/Images/915x900/2808375_d79d48229f43.png", 199),
-    new SSD_1.SSD("SSD Portable P1 1TB", "https://www.proshop.dk/Images/915x900/3076198_60558dd3e988.jpgg", 109),
+    new SSD_1.SSD("SSD Portable P1 1TB", "https://www.proshop.dk/Images/915x900/3076198_60558dd3e988.jpg", 109),
     new SSD_1.SSD("SSD Extreme X2 2TB", "https://geekd.dk/cdn/shop/products/be503047-b696-44b3-9e14-58b373ec3abd.jpg?v=1642682050", 299),
 ];

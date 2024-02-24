@@ -3,13 +3,14 @@ import axios from 'axios';
 import { SSD } from '../models/SSD';
 
 const SSDs = () => {
-  const [ssds, setSSDs] = useState<SSD[]>([]);
+  const [listOfssds, setSSDs] = useState<SSD[]>([]);
 
   useEffect(() => {
     const fetchSSDs = async () => {
       try {
         const response = await axios.get<SSD[]>('http://localhost:3001/get-products-by-category?productType=SSD');
-        setSSDs(response.data);
+        const ssds = response.data.map(item => new SSD(item.title, item.imageUrl, item.basePrice));
+        setSSDs(ssds);
       } catch (error) {
         console.error('Error fetching SSDs:', error);
         setSSDs([]);
@@ -19,21 +20,18 @@ const SSDs = () => {
     fetchSSDs();
   }, []);
 
-  const getPriceAfterDiscount = (basePrice: number, discountRate: number) => {
-    return (basePrice * (1 - discountRate)).toFixed(2);
-  };
-
   return (
     <div className="content-container">
       <h2>SSDs</h2>
-      <ul>
-        {ssds.map((ssd, index) => (
-          <li key={index}>
+      <div className='product-item-container'>
+        {listOfssds.map((ssd, index) => (
+          <div className='product-item' key={index}>
             <img src={ssd.imageUrl} alt={ssd.title} style={{ width: '100px', height: '100px' }} />
-            <div>{ssd.title} - Price: ${getPriceAfterDiscount(ssd.basePrice, ssd.discountRate)}</div>
-          </li>
+            <h3>{ssd.title}</h3>
+            <p>Price: ${ssd.getPrice()}</p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

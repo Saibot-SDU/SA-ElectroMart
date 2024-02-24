@@ -15,6 +15,6 @@ export class SSD {
   }
 
   public getPrice(): number {
-    return (this.basePrice * (1 - this.discountRate)) * this.taxRate;
+    return Math.round((this.basePrice * (1 - this.discountRate)) * this.taxRate);
   }
 }

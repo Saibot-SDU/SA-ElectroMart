@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import Home from './components/Home';
-import Laptops from './components/Laptops';
-import SSDs from './components/SSDs';
-import Phones from './components/Phones';
-import Playstations from './components/Playstations';
+import Home from './pages/Home';
+import Laptops from './pages/Laptops';
+import SSDs from './pages/SSDs';
+import Phones from './pages/Phones';
+import Playstations from './pages/Playstations';
 import Carousel from './components/Carousel'; // Assuming Carousel is its own component
 import './App.css';
 
