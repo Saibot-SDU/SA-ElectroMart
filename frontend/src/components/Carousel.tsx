@@ -2,6 +2,11 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css'; // core Swiper
+import 'swiper/css/navigation'; // navigation module
+
+
 
 const Carousel = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -13,6 +18,7 @@ const Carousel = () => {
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
+        setProducts([]);
       }
     };
 
@@ -22,17 +28,24 @@ const Carousel = () => {
   return (
     <div className="content-container">
       <h2>Recommended Products!</h2>
-      <Swiper spaceBetween={50} slidesPerView={3}>
-        {products.map((product) => (
-          <SwiperSlide key={product.title}>
-            <div className="product-image-container">
-              <img src={product.imageUrl} alt={product.title} />
-            </div>
-            <h3>{product.title}</h3>
-            <p>Price: ${(product.basePrice * (1 - product.discountRate)).toFixed(2)}</p>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+
+      {products.length === 0 ? (
+        <p>Unable to get recommended products...</p>
+      ) : (
+        <Swiper modules={[Navigation]}
+          navigation spaceBetween={50} slidesPerView={3}>
+          {products.map((product) => (
+            <SwiperSlide key={product.title}>
+              <div className="product-image-container">
+                <img src={product.imageUrl} alt={product.title} />
+              </div>
+              <h3>{product.title}</h3>
+              <p>Price: ${(product.basePrice * (1 - product.discountRate)).toFixed(2)}</p>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      )}
+
     </div>
   );
 };
